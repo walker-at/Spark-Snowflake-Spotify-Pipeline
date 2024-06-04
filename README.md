@@ -21,3 +21,11 @@ copy STORAGE_AWS_EXTERNAL_ID value and aste it in the IAM trust policy key calle
 
 creating event notifications in S3 to connect our Snowpipe: one for each folder in the bucket (album_data, songs_data, artist_data)
 to connect the snowpipe: Run DESC pipe pipe.tbl_songs_pipe and copy the notification_channel value, go to your s3 bucket, create an event notification, under Destination select SQS Queue and select enter SQS queue ARN and paste in this value there.
+
+add tirgger in lambda function
+
+add CloudWatch trigger on top of our whole pipeline to run according to our business needs, whether that be every minute, hour, day, or week.
+
+errors:
+iam role
+snowflake schema specification for pipes
