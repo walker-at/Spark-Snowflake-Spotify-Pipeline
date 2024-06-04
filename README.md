@@ -11,3 +11,11 @@ write our extraction code in python and deploy it on AWS Lambda. on top of that 
 on the spotify api we have artists, album info, and track info available
 
 using json file
+
+
+snowflake:
+copy STORAGE_AWS_IAM_USER_ARN value and paste it in the IAM trust policy key called AWS
+copy STORAGE_AWS_EXTERNAL_ID value and aste it in the IAM trust policy key called sts:ExternalId:
+
+creating event notifications in S3 to connect our Snowpipe: one for each folder in the bucket (album_data, songs_data, artist_data)
+to connect the snowpipe: Run DESC pipe pipe.tbl_songs_pipe and copy the notification_channel value, go to your s3 bucket, create an event notification, under Destination select SQS Queue and select enter SQS queue ARN and paste in this value there.
