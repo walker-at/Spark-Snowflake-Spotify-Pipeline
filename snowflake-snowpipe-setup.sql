@@ -10,7 +10,7 @@ COMMENT = 'Creating connection to s3'
 
 DESC integration s3_init;
 
-// create file format object
+-- create file format object
 CREATE OR REPLACE file format csv_fileformat
     type = csv
     field_delimiter = ','
@@ -23,7 +23,7 @@ CREATE OR REPLACE stage spotify_stage
     STORAGE_INTEGRATION = s3_init
     FILE_FORMAT = csv_fileformat
 
-LIST @spotify_stage/songs_data;
+-- LIST @spotify_stage/songs_data;
 
 CREATE OR REPLACE TABLE tbl_album (
     album_id STRING,
@@ -53,10 +53,7 @@ CREATE OR REPLACE TABLE tbl_songs (
 COPY INTO tbl_songs
 FROM @spotify_stage/songs_data/songs_transformed_2024-06-04/run-1717509899160-part-r-00000
 
-select * from tbl_songs
-
-COPY INTO tbl_artists
-FROM @spotify_stage/songs_data/songs_transformed_2024-06-04/run-1717509899160-part-r-00000
+-- select * from tbl_songs
 
 -- create snowpipe
 CREATE OR REPLACE SCHEMA pipe;
@@ -79,6 +76,4 @@ AS
 COPY INTO spotify_db.public.tbl_album
 FROM @spotify_db.public.spotify_stage/album_data/;
 
-DESC pipe pipe.tbl_songs_pipe
-
-select count(*) from tbl_songs
+-- DESC pipe pipe.tbl_songs_pipe
