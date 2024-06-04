@@ -96,3 +96,31 @@ def write_to_s3(df, path_suffix, format_type="csv"):
 write_to_s3(album_df, "album_data/album_transformed_{}".format(datetime.now().strftime("%Y-%m-%d")), "csv")
 write_to_s3(artist_df, "artist_data/artist_transformed_{}".format(datetime.now().strftime("%Y-%m-%d")), "csv")
 write_to_s3(song_df, "songs_data/songs_transformed_{}".format(datetime.now().strftime("%Y-%m-%d")), "csv")
+
+# get file names for our function which will move files from the "to_processed" folder to the "processed" folder
+def list_s3_objects(bucket, prefix):
+    s3_client = boto3.client('s3')
+    response = s3_client.list_objects_v2(Bucket=bucket, Prefix=prefix)
+    keys = [content['Key'] for content in response.get('Contents', []) if content['Key'].endswith('.json')]
+    return keys
+
+bucket_name = "spotify-etl-walker"
+prefix = raw_data/to_processed/"
+spotify_keys = list_s3_objects(bucket_name, prefix)
+
+def move_and_delete_files(spotify_keys, Bucket):
+    s3_resource = boto3.resource('s3')
+    for key in spotify_keys:
+        copy_source = {
+            'Bucket': Bucket,
+            'Key'': key
+        }
+        # destination key
+        destination_key = 'raw_data/processed/' + key.split("/")[-1]
+
+        # copy file to destination
+        s3_resource.meta.client.copy(copy_source, Bucket, destination_key)
+
+        # delete from old location
+        s3_resource.Object(Bucket, key).delete()
+move_and_delete_files(spotify_keys, Bucket)
