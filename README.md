@@ -29,7 +29,7 @@ Snowpipe - for integration from S3 into Snowflake
 2. This lambda function then triggers an ETL job in AWS Glue to perform our Spark transformations on the data.
 3. The transformed data is put into the "transformed_data/album_data" or "transformed_data/songs_data" or "transformed_data/artist_data" depending on which it is.
 4. The spark code in AWS Glue then moves the original file from "raw_data/to_processed" to "raw_data/processed".
-5. Snowpipe is triggered when files are deposited in any of the 3 transformed_data folders in my S3 bucket. The snowpipe puts this data into either the "tbl_album" table, the "tbl_artist" table, or the "tbl_songs" table in Snowflake where it is ready to be queried for further analysis.
+5. Snowpipe is triggered when files are deposited in any of the 3 transformed_data folders in my S3 bucket. I have 3 different snowpipes which put the data into either the "tbl_album" table, the "tbl_artist" table, or the "tbl_songs" table in Snowflake where it is ready to be queried for further analysis.
 
 code inside lambda function for data extraction triggers the AWS Glue transformation
 
