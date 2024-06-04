@@ -1,5 +1,9 @@
 # Spark-Snowflake-Pipeline
 
+lambda function to extract data from the spotify api and move it to the "raw_data/to_processed" folder in my S3 bucket, this lambda function then triggers an ETL job in AWS Glue to perform our Spark transformations on the data, data is put into the "transformed_data/album_data" or "transformed_data/songs_data" or "transformed_data/artist_data" the spark code in glue then moves the file from "raw_data/to_processed" to "raw_data/processed".
+
+code inside lambda function for data extraction triggers the AWS Glue transformation
+
 understand music industry
 analyze top global songs availble on spotify playlist called "top songs - global"
 extract from spotify api
