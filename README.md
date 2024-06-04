@@ -3,12 +3,8 @@
 # Business Objective
 Understand the music industry by analyzing the weekly-updated top 50 global songs on the spotify playlist called "Top Songs - Global" 
 
-extract from spotify api
-explain the split into album artist song
-on the spotify api we have artists, album info, and track info available
-using json file
-The data from the Spotify API comes as a .json file with 3 key fields: information on the album, the artist(s), and the song. I will create 3 different tables based on this.
-
+# Data 
+The Data is extracted from the Spotify. The data from the Spotify API comes as a .json file with 3 key fields: information on the album, the artist(s), and the song. I will create 3 different tables based on this.
 
 # Tools
 * IAM roles with permissions
