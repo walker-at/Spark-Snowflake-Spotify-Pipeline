@@ -11,10 +11,11 @@ The data from the Spotify API comes as a .json file with 3 key fields: informati
 
 
 # Tools
-Amazon CloudWatch
-AWS Lambda Function - data extraction (written in python)
-AWS Glue - data transformation (written in Apache Spark)
-Amazon S3 bucket - The folder structure within my bucket will look like the following:
+* IAM roles with permissions
+* Amazon CloudWatch
+* AWS Lambda Function - data extraction (written in python)
+* AWS Glue - data transformation (written in Apache Spark)
+* Amazon S3 bucket - The folder structure within my bucket will look like the following:
   * raw_data
       * to_processed
       * processed
