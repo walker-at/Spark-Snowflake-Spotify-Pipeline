@@ -9,16 +9,14 @@ from awsglue.utils import getResolvedOptions
 from pyspark.context import SparkContext
 from awsglue.context import GlueContext
 from awsglue.job import Job
+from pyspark.sql.functions import explode, col, to_date
+from datetime import datetime
+from awsglue.dynamicframe import DynamicFrame
   
 sc = SparkContext.getOrCreate()
 glueContext = GlueContext(sc)
 spark = glueContext.spark_session
 job = Job(glueContext)
-
-from pyspark.sql.functions import explode, col, to_date
-from datetime import datetime
-from awsglue.dynamicframe import DynamicFrame
-
 
 s3_path = "s3://spotify-etl-walker/raw_data/to_processed/"
 source_dyf = glueContext.create_dynamic_frame_from_options(
