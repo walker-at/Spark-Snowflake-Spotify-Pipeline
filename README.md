@@ -23,7 +23,7 @@ The data from the Spotify API comes as a .json file with 3 key fields: informati
       * album_data
       * artist_data
       * songs_data
-Snowpipe - for integration from S3 into Snowflake
+* Snowpipe - for integration from S3 into Snowflake
 
 # Workflow
 1. Lambda function to extract data from the spotify api and moves it to the "raw_data/to_processed" folder in my S3 bucket. I schedule this to run on a weekly basis with Amazon CloudWatch.
