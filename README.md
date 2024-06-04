@@ -12,6 +12,8 @@ on the spotify api we have artists, album info, and track info available
 
 using json file
 
+Use AWS Glue to run a spark engine for our transformation job
+
 
 snowflake:
 copy STORAGE_AWS_IAM_USER_ARN value and paste it in the IAM trust policy key called AWS
