@@ -19,7 +19,8 @@ def lambda_handler(event, context):
     spotify_data = sp.playlist_tracks(playlist_URI)
     
     filename = "spotify_raw_" + str(datetime.now()) + ".json"
-    # upload json string to an s3 object
+    
+    # upload json file to an s3 object
     client = boto3.client('s3')
     
     client.put_object(
