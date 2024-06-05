@@ -38,7 +38,6 @@ To connect our Snowpipe:
 There ia a snowpipe for each sub-folder in the "transformed_data" folder in the S3 bucket (album_data, songs_data, artist_data)
 To connect the snowpipe: Run DESC pipe pipe.tbl_songs_pipe and copy the notification_channel value, go to your s3 bucket, create an event notification, under Destination select SQS Queue and select enter SQS queue ARN and paste in this value there. Repeat this for tbl_album_pipe and tbl_artist_pipe.
 
-
-Errors Encountered:
+# Errors Encountered:
 IAM role permission
 Snowflake schema specification for pipes
