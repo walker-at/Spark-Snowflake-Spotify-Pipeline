@@ -40,4 +40,5 @@ To connect the snowpipe: Run DESC pipe pipe.tbl_songs_pipe and copy the notifica
 
 # Errors Encountered:
 IAM role permission
+
 Snowflake schema specification for pipes
